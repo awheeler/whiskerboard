@@ -13,7 +13,7 @@ class Migration(SchemaMigration):
         db.create_table('board_service', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True, unique=True)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
         db.send_create_signal('board', ['Service'])
@@ -22,7 +22,7 @@ class Migration(SchemaMigration):
         db.create_table('board_status', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True, unique=True)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('severity', self.gf('django.db.models.fields.IntegerField')()),
             ('image', self.gf('django.db.models.fields.CharField')(max_length=100)),
@@ -66,7 +66,7 @@ class Migration(SchemaMigration):
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'})
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True', 'unique': 'True'})
         },
         'board.status': {
             'Meta': {'object_name': 'Status'},
@@ -75,7 +75,7 @@ class Migration(SchemaMigration):
             'image': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'severity': ('django.db.models.fields.IntegerField', [], {}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'})
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True', 'unique': 'True'})
         }
     }
 
